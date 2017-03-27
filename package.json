@@ -1,0 +1,13 @@
+{
+  "name": "toolbelt-plugin-template",
+  "title": "Plugin Template",
+  "version": "0.0.4",
+  "description": "An example template for building Toolbelt plugins.",
+  "main": "index.html",
+  "config":{
+    "width": 400, 
+    "height": 360,
+    "devmode": true,
+    "hidden": false
+  }
+}
