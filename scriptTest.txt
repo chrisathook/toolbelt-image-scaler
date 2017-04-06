@@ -1,0 +1,1 @@
+Writing text from the NodeJS script.
