@@ -1,5 +1,5 @@
 module.exports = {
 	run: function(){
-		console.log('Texting module.')
+		console.log('Testing module.')
 	}
 }

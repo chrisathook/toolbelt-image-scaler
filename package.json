@@ -1,7 +1,7 @@
 {
   "name": "toolbelt-plugin-template",
   "title": "Plugin Template",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "An example template for building Toolbelt plugins.",
   "main": "index.html",
   "config":{

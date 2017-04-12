@@ -15,6 +15,8 @@ function init() {
 
   plugin.init(); // We've rendered our elements, now to tell Toolbelt the plugin is ready to be displayed.
 
+  openFrame();
+
 }
 
 function renderInterface() {
@@ -43,8 +45,21 @@ function runNodeScript() {
   var runner = plugin.runScript('./script.js'); // Run NodeJS script.
 
   runner.ondata = function(msg){ // Fires when the script runs console.log() or stdout.write()
-    console.log(msg);
+    console.log('From Node process:', msg);
   }
+
+  runner.sendData('init', {message: 'Sending data to a runner instance.'});
+}
+
+function openFrame(){
+  var frame = app.createFrame('Plugin Template Frame', {
+    width: 300,
+    height: 250,
+    x: plugin.frame.width - 5,
+    y: plugin.frame.y
+  });
+
+  frame.document.body.innerHTML = 'Hello World!';
 }
 
 function writeTestFile() {
