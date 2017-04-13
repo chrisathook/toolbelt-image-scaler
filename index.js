@@ -52,7 +52,7 @@ function runNodeScript() {
 }
 
 function openFrame(){
-  var frame = app.createFrame('Plugin Template Frame', {
+  var frame = plugin.createFrame('Plugin Template Frame', {
     width: 300,
     height: 250,
     x: plugin.frame.width - 5,
