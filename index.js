@@ -12,7 +12,9 @@ function init() {
   renderInterface();
   
   
-  //setupCheckbox();
+  pathHandlerSetup();
+  
+  
   runNodeScript();
   writeTestFile();
 
@@ -34,7 +36,7 @@ function renderPathForm (){
   
   console.log (111,plugin.config.sourcePath);
 }
-
+// initial render.
 function renderInterface() {
   // Plugins have access to the DOM of the index.html file this script was loaded in.
   //var paragraphElement = document.createElement('p');
@@ -42,6 +44,39 @@ function renderInterface() {
   //document.body.appendChild(paragraphElement);
   renderPathForm()
 }
+
+// event handlers
+
+function pathHandlerSetup() {
+  let sourceInput = document.querySelector('#sourcePath');
+  let outputInput = document.querySelector('#outputPath');
+  let sourceOpen = document.querySelector('#sourceOpen');
+  let outputOpen = document.querySelector('#outputOpen');
+  
+  
+  let sourceChangeHandler = function (e){
+  
+    console.log (e);
+    sourceInput.value = sourceOpen.files[0].path;
+    plugin.config.sourcePath = sourceInput.value;
+  
+  };
+  let outChangeHandler = function (e){
+    
+    console.log (e);
+    outputInput.value = outputOpen.files[0].path;
+    plugin.config.outputPath = outputInput.value;
+    
+  };
+  
+  sourceOpen.addEventListener('change',sourceChangeHandler);
+  outputOpen.addEventListener('change',outChangeHandler);
+  
+  
+}
+
+
+
 
 function setupCheckbox() {
   var settingsCheckbox = document.querySelector('#some-setting');
