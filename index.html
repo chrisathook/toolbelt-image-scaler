@@ -2,34 +2,55 @@
 <html>
 <title>Plugin Template</title>
 <head>
-	<script src="index.js"></script>
+  <script src="index.js"></script>
 </head>
 <style>
-    body {
-		font-family: sans-serif;
-		padding: 5px;
-		border-radius: 3px;
+  body {
+    font-family: sans-serif;
+    padding: 5px;
+    border-radius: 3px;
 
-		font-size: 14px;
-		line-height: 16px;
-		color: rgb(199, 199, 199);
-    }
+    font-size: 14px;
+    line-height: 16px;
+    color: rgb(199, 199, 199);
+  }
+
+  #sourcePath {
+
+    width: 100%;
+
+  }
+
+  #outputPath {
+
+    width: 100%;
+
+  }
+
+  label {
+    cursor: pointer;
+
+  }
+
 </style>
 <script>
 </script>
 <body>
-	<h1>Static Image Scaler</h1>
-  <h2>Directions</h2>
-  <h2>Paths</h2>
-  <hr>
-  <div>
-    <p>sourcePath</p>
-    <input id="sourcePath" type="file" webkitdirectory />
-    <p>outputPath</p>
-    <input id="outputPath" type="file" webkitdirectory />
+<h1>Static Image Scaler</h1>
+<h2>Directions</h2>
+<h2>Paths</h2>
+<hr>
+<div>
+  <p>sourcePath</p>
+  <input id="sourcePath" type="text"/>
+  <input id="sourceOpen"  type="file" webkitdirectory style="display:none;" />
+  <label for="sourceOpen">Click To Set Source Directory</label>
+  <p>outputPath</p>
+  <input id="outputPath" type="text"/>
+  <input id="outputOpen" title=" " type="file" webkitdirectory style="display:none;" />
+  <label for="outputOpen">Click To Set Output Directory</label>
 
-
-  </div>
+</div>
 
 
 </body>

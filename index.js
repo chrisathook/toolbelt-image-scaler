@@ -1,3 +1,4 @@
+"use strict";
 var fs = require('fs');
 var path = require('path');
 var test = require('./test'); // Plugins support using require.
@@ -8,7 +9,9 @@ function init() {
 
   test.run(); // Testing out our included module.
 
-  //renderInterface();
+  renderInterface();
+  
+  
   //setupCheckbox();
   runNodeScript();
   writeTestFile();
@@ -19,12 +22,25 @@ function init() {
 
 }
 
+
+function renderPathForm (){
+  
+  let sourceInput = document.querySelector('#sourcePath');
+  let outputInput = document.querySelector('#outputPath');
+  
+  
+  sourceInput.value = plugin.config.sourcePath;
+  outputInput.value = plugin.config.outputPath;
+  
+  console.log (111,plugin.config.sourcePath);
+}
+
 function renderInterface() {
   // Plugins have access to the DOM of the index.html file this script was loaded in.
-  var paragraphElement = document.createElement('p');
-  paragraphElement.innerHTML = 'Some example text.';
-
-  document.body.appendChild(paragraphElement);
+  //var paragraphElement = document.createElement('p');
+  //paragraphElement.innerHTML = 'Some example text.';
+  //document.body.appendChild(paragraphElement);
+  renderPathForm()
 }
 
 function setupCheckbox() {
