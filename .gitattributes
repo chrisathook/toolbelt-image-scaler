@@ -1,0 +1,6 @@
+* text=auto
+
+*.html binary
+*.scss binary
+*.css binary
+*.js binary
