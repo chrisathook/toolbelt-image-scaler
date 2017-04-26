@@ -15,7 +15,7 @@ function init() {
 
   plugin.init(); // We've rendered our elements, now to tell Toolbelt the plugin is ready to be displayed.
 
-  openFrame();
+  //openFrame();
 
 }
 

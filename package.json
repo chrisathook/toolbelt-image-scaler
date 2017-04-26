@@ -5,9 +5,11 @@
   "description": "An example template for building Toolbelt plugins.",
   "main": "index.html",
   "config":{
-    "width": 400, 
-    "height": 360,
+    "width": 500,
+    "height": 700,
     "devmode": true,
-    "hidden": false
+    "hidden": false,
+    "sourcePath":"G:\\DOCS\\Out Loud ANEW\\internal projects\\image-scaler\\_source",
+    "outputPath":"G:\\DOCS\\Out Loud ANEW\\internal projects\\image-scaler\\_out"
   }
 }
