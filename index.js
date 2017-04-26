@@ -8,8 +8,8 @@ function init() {
 
   test.run(); // Testing out our included module.
 
-  renderInterface();
-  setupCheckbox();
+  //renderInterface();
+  //setupCheckbox();
   runNodeScript();
   writeTestFile();
 
