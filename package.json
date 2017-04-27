@@ -10,6 +10,29 @@
     "devmode": true,
     "hidden": false,
     "sourcePath":"G:\\DOCS\\Out Loud ANEW\\internal projects\\image-scaler\\_source",
-    "outputPath":"G:\\DOCS\\Out Loud ANEW\\internal projects\\image-scaler\\_out"
+    "outputPath":"G:\\DOCS\\Out Loud ANEW\\internal projects\\image-scaler\\_out",
+    "jobs": [
+      {
+        "name": "Job1",
+        "scale": 100,
+        "targetKB": 200,
+        "minQuality": 40,
+        "suffix":"_WIDTHxHEIGHT"
+      },
+      {
+        "name": "forceit",
+        "scale": 100,
+        "targetKB": -1,
+        "minQuality": 40,
+        "suffix":"_WIDTHxHEIGHT"
+      },
+      {
+        "name": "forceit2",
+        "scale": 100,
+        "targetKB": -1,
+        "minQuality": 80,
+        "suffix":"_WIDTHxHEIGHT"
+      }
+    ]
   }
 }
