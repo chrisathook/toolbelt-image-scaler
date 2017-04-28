@@ -57,6 +57,34 @@ function renderJobs(jobsArray) {
     root.appendChild(generateJobHTML(job));
   }
 }
+
+function setUpAddJob (){
+  
+  
+  let button = document.querySelector('#createJob');
+  
+  let handler = function () {
+  
+    let job = {
+      "name":'Job '+getRandomArbitrary(10,1000),
+      "scale": 100,
+      "targetKB": 200,
+      "minQuality": 40,
+      "suffix":"_WIDTHxHEIGHT"
+    };
+  
+    plugin.config.jobs.push(job)
+  
+    let root = document.querySelector('#jobsRoot');
+    root.appendChild(generateJobHTML(job));
+  
+  };
+  
+  button.addEventListener('click',handler);
+  
+  
+}
+
 // initial render.
 function renderInterface() {
   // Plugins have access to the DOM of the index.html file this script was loaded in.
@@ -65,6 +93,7 @@ function renderInterface() {
   //document.body.appendChild(paragraphElement);
   renderPathForm();
   renderJobs(plugin.config.jobs);
+  setUpAddJob();
 }
 // event handlers
 function pathHandlerSetup() {
@@ -118,4 +147,8 @@ function writeTestFile() {
     if (err) return console.log(err);
     console.log('Wrote file from plugin.')
   });
+}
+
+function getRandomArbitrary(min, max) {
+  return Math.round(  Math.random() * (max - min) + min);
 }
