@@ -21,37 +21,42 @@ function renderPathForm() {
 }
 function generateJobHTML(job) {
   let container = document.createElement("div");
-  
   container.className = "jobDisplay";
-  
+  let name = job.name.slice(0);
   for (let key in job) {
     let value = job[key];
-    
+    let rowDiv = document.createElement("div");
+    rowDiv.className = `rowDiv`;
+    let rowP = document.createElement('p');
+    rowP.innerHTML = key;
+    rowDiv.appendChild(rowP);
     let input = document.createElement("input");
     input.type = "text";
     input.className = `${key} jobInput`;
     input.value = value;
-    container.appendChild(input)
+    input.name = key;
+    rowDiv.appendChild(input);
+    container.appendChild(rowDiv)
   }
-  
-  
+  let jobRemover = function () {
+    container.parentNode.removeChild(container);
+    plugin.config.jobs = plugin.config.jobs.filter(function (obj) {
+      return obj.name !== name;
+    });
+  };
+  let deleteButton = document.createElement("button");
+  deleteButton.innerHTML = 'DeleteJob';
+  deleteButton.addEventListener('click', jobRemover);
+  container.appendChild(deleteButton);
+  container.appendChild(document.createElement("hr"));
   return container;
 }
-
-function renderJobs (jobsArray){
-  
+function renderJobs(jobsArray) {
   let root = document.querySelector('#jobsRoot');
-  
   for (const job of jobsArray) {
-  
-  
-  
-    root.appendChild( generateJobHTML(job));
-    
+    root.appendChild(generateJobHTML(job));
   }
 }
-
-
 // initial render.
 function renderInterface() {
   // Plugins have access to the DOM of the index.html file this script was loaded in.
@@ -60,7 +65,6 @@ function renderInterface() {
   //document.body.appendChild(paragraphElement);
   renderPathForm();
   renderJobs(plugin.config.jobs);
-  
 }
 // event handlers
 function pathHandlerSetup() {
