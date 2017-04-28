@@ -1,6 +1,6 @@
 {
-  "name": "toolbelt-plugin-template",
-  "title": "Plugin Template",
+  "name": "toolbelt-plugin-Image-scaler",
+  "title": "Static Image Scaler",
   "version": "0.0.5",
   "description": "An example template for building Toolbelt plugins.",
   "main": "index.html",
