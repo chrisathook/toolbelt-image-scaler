@@ -2,8 +2,7 @@
 let fs = require('fs');
 let path = require('path');
 let test = require('./test'); // Plugins support using require.
-let taskRunner = require ('./TaskRunner');
-
+let taskRunner = require('./TaskRunner');
 plugin.onload = init; // triggered when Toolbelt is ready to display this plugin.
 function init() {
   test.run(); // Testing out our included module.
@@ -20,9 +19,6 @@ function renderPathForm() {
   sourceInput.value = plugin.config.sourcePath;
   outputInput.value = plugin.config.outputPath;
   console.log(111, plugin.config.sourcePath);
-  
-  taskRunner('test data',console);
-  
 }
 function generateJobHTML(job) {
   let container = document.createElement("div");
@@ -62,34 +58,22 @@ function renderJobs(jobsArray) {
     root.appendChild(generateJobHTML(job));
   }
 }
-
-function setUpAddJob (){
-  
-  
+function setUpAddJob() {
   let button = document.querySelector('#createJob');
-  
   let handler = function () {
-  
     let job = {
-      "name":'Job '+getRandomArbitrary(10,1000),
+      "name": 'Job ' + getRandomArbitrary(10, 1000),
       "scale": 100,
       "targetKB": 200,
       "minQuality": 40,
-      "suffix":"_WIDTHxHEIGHT"
+      "suffix": "_WIDTHxHEIGHT"
     };
-  
     plugin.config.jobs.push(job)
-  
     let root = document.querySelector('#jobsRoot');
     root.appendChild(generateJobHTML(job));
-  
   };
-  
-  button.addEventListener('click',handler);
-  
-  
+  button.addEventListener('click', handler);
 }
-
 // initial render.
 function renderInterface() {
   // Plugins have access to the DOM of the index.html file this script was loaded in.
@@ -153,7 +137,6 @@ function writeTestFile() {
     console.log('Wrote file from plugin.')
   });
 }
-
 function getRandomArbitrary(min, max) {
-  return Math.round(  Math.random() * (max - min) + min);
+  return Math.round(Math.random() * (max - min) + min);
 }
