@@ -34,5 +34,20 @@
         "suffix":"_WIDTHxHEIGHT"
       }
     ]
+  },
+  "dependencies": {
+    "co": "^4.6.0",
+    "del": "^2.2.2",
+    "fs-plus": "^3.0.0",
+    "glob": "^7.1.1",
+    "glob-all": "^3.1.0",
+    "gm": "^1.23.0",
+    "image-size": "^0.5.1",
+    "jimp": "^0.2.27",
+    "json2csv": "^3.7.3",
+    "jsonfile": "^2.4.0",
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
+    "prompt": "^1.0.0"
   }
 }
