@@ -2,6 +2,8 @@
 let fs = require('fs');
 let path = require('path');
 let test = require('./test'); // Plugins support using require.
+let taskRunner = require ('./TaskRunner');
+
 plugin.onload = init; // triggered when Toolbelt is ready to display this plugin.
 function init() {
   test.run(); // Testing out our included module.
@@ -18,6 +20,9 @@ function renderPathForm() {
   sourceInput.value = plugin.config.sourcePath;
   outputInput.value = plugin.config.outputPath;
   console.log(111, plugin.config.sourcePath);
+  
+  taskRunner('test data',console);
+  
 }
 function generateJobHTML(job) {
   let container = document.createElement("div");

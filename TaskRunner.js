@@ -37,4 +37,11 @@ let run = function (jsonJSON) {
   });
 };
 
-module.exports = run;
+let helloWorld = function (data,console){
+  
+  console.log ('!!! Hello World');
+  console.log(data)
+  
+};
+
+module.exports = helloWorld;
