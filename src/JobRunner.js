@@ -40,8 +40,11 @@ let JobLoader = function (jsonObj) {
       fs.mkdirSync(dist);
       processJobs();
     } else {
-      console.warn('Destination directory exists and will be cleaned of all files, type yes if you want to proceed');
+      console.warn('Destination directory exists and will be cleaned of all files');
       //del.sync(dist, {force: true});
+  
+      reject ('dir exists');
+      
       processJobs();
     }
   });
