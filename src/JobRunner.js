@@ -37,7 +37,8 @@ let JobLoader = function (jsonObj) {
       throw new Error('Source directory does not exist: ' + source);
     }
     if (!fs.existsSync(dist)) {
-      throw new Error('Destination directory does not exist: ' + dist);
+      fs.mkdirSync(dist);
+      processJobs();
     } else {
       console.warn('Destination directory exists and will be cleaned of all files, type yes if you want to proceed');
       //del.sync(dist, {force: true});
