@@ -20,13 +20,13 @@ let run = function (jsonObj) {
       console.log('!!! Jobs Loaded');
       const queue = JobQueue();
       
-      /*
+      
       queue.runJobs(jobs).then(function () {
           console.log('All Jobs Done')
         })
         .then(function () {
           resolve();
-        })*/
+        })
     });
   });
 };
