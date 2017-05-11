@@ -40,7 +40,7 @@ let JobLoader = function (jsonObj) {
       throw new Error('Destination directory does not exist: ' + dist);
     } else {
       console.warn('Destination directory exists and will be cleaned of all files, type yes if you want to proceed');
-      del.sync(dist, {force: true});
+      //del.sync(dist, {force: true});
       processJobs();
     }
   });
