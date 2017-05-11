@@ -8,8 +8,7 @@ function init() {
   test.run(); // Testing out our included module.
   renderInterface();
   pathHandlerSetup();
-  runNodeScript();
-  writeTestFile();
+  setUpRunJobsButton();
   plugin.init(); // We've rendered our elements, now to tell Toolbelt the plugin is ready to be displayed.
   //openFrame();
 }
@@ -102,6 +101,13 @@ function pathHandlerSetup() {
   };
   sourceOpen.addEventListener('change', sourceChangeHandler);
   outputOpen.addEventListener('change', outChangeHandler);
+}
+function setUpRunJobsButton() {
+  let runButton = document.querySelector('#runJobs');
+  let runButtonHandler = function (e) {
+    taskRunner(plugin.config)
+  };
+  runButton.addEventListener('click',runButtonHandler);
 }
 function setupCheckbox() {
   var settingsCheckbox = document.querySelector('#some-setting');

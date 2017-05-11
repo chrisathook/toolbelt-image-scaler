@@ -13,35 +13,25 @@ const JobLoader = require('./src/JobRunner').JobLoader;
 //
 //const source = path.resolve(process.cwd(), '_source');
 //const dist = path.resolve(process.cwd(), '_out');
-
-
-
-let run = function (jsonJSON) {
-  console.log('hello world');
-
-  /*
-   let jobs = [
-   JobConfig(source,
-   dist,
-   50, // set min jpeg compression, won't compress harder than this
-   50, // set scale, 100 = no scale, 50 = 1/2
-   40, // set the goal file weight
-   'jobOne' // give job a name
-   )
-   ];*/
-  JobLoader(jsonJSON).then(function (jobs) {
-    const queue = JobQueue();
-    queue.runJobs(jobs).then(function () {
-      console.log('All Jobs Done')
-    })
+let run = function (jsonObj) {
+  return new Promise(function (resolve, reject) {
+    console.log('hello world');
+    JobLoader(jsonObj).then(function (jobs) {
+      console.log('!!! Jobs Loaded');
+      const queue = JobQueue();
+      
+      /*
+      queue.runJobs(jobs).then(function () {
+          console.log('All Jobs Done')
+        })
+        .then(function () {
+          resolve();
+        })*/
+    });
   });
 };
-
-let helloWorld = function (data,console){
-  
-  console.log ('!!! Hello World');
+let helloWorld = function (data, console) {
+  console.log('!!! Hello World');
   console.log(data)
-  
 };
-
-module.exports = helloWorld;
+module.exports = run;

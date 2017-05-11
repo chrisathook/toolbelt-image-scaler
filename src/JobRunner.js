@@ -13,64 +13,36 @@ let prompt = require('prompt');
 //
 const sizeAndScale = require('../src/ImageOperations').sizeAndScale;
 //
-let JobLoader = function (jsonPath) {
+let JobLoader = function (jsonObj) {
   return new Promise(function (resolve, reject) {
-    jsonfile.readFile(jsonPath, function (err, obj) {
-      console.dir(obj);
-      if (err) {
-        console.error(err);
-        reject(err);
-      } else {
-        let source = path.resolve(obj.sourcePath);
-        let dist = path.resolve(obj.outputPath);
-        
-        let processJobs = function () {
-          let jobsArray = [];
-          for (let value of obj.jobs) {
-            jobsArray.push(
-              new JobConfig(
-                source,
-                dist,
-                value.minQuality,
-                value.scale,
-                value.targetKB,
-                value.name,
-                value.suffix
-              ))
-          }
-          resolve(jobsArray);
-        };
-  
-        if (!fs.existsSync(source)) {
-    
-          throw new Error('Source directory does not exist: '+source);
-    
-        }
-        
-        if (!fs.existsSync(dist)) {
-  
-          throw new Error('Destination directory does not exist: '+dist);
-          
-        } else {
-          console.warn('Destination directory exists and will be cleaned of all files, type yes if you want to proceed');
-          prompt.start();
-          prompt.get(['agree'], function (err, result) {
-            if (err) {
-              throw new Error(err)
-            } else {
-              if (result.agree === 'yes') {
-                del.sync(dist, {force: true});
-                processJobs();
-              } else {
-                
-                console.info('Goodbye');
-                process.exit(0)
-              }
-            }
-          });
-        }
+    let source = path.resolve(jsonObj.sourcePath);
+    let dist = path.resolve(jsonObj.outputPath);
+    let processJobs = function () {
+      let jobsArray = [];
+      for (let value of jsonObj.jobs) {
+        jobsArray.push(
+          new JobConfig(
+            source,
+            dist,
+            value.minQuality,
+            value.scale,
+            value.targetKB,
+            value.name,
+            value.suffix
+          ))
       }
-    })
+      resolve(jobsArray);
+    };
+    if (!fs.existsSync(source)) {
+      throw new Error('Source directory does not exist: ' + source);
+    }
+    if (!fs.existsSync(dist)) {
+      throw new Error('Destination directory does not exist: ' + dist);
+    } else {
+      console.warn('Destination directory exists and will be cleaned of all files, type yes if you want to proceed');
+      del.sync(dist, {force: true});
+      processJobs();
+    }
   });
 };
 /**
