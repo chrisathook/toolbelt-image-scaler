@@ -13,7 +13,7 @@ const JobLoader = require('./src/JobRunner').JobLoader;
 //
 //const source = path.resolve(process.cwd(), '_source');
 //const dist = path.resolve(process.cwd(), '_out');
-let run = function (jsonObj,clobber) {
+let run = function (jsonObj,clobber,console) {
   return new Promise(function (resolve, reject) {
     console.log('hello world');
     JobLoader(jsonObj,clobber).then(function (jobs) {
@@ -40,9 +40,5 @@ let run = function (jsonObj,clobber) {
         
       });
   });
-};
-let helloWorld = function (data, console) {
-  console.log('!!! Hello World');
-  console.log(data)
 };
 module.exports = run;

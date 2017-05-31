@@ -121,7 +121,18 @@ function setUpRunJobsButton() {
       y: plugin.frame.y
     });
     frame.document.body.innerHTML = '<span style="color:white">Jobs Running</span><br/><br/>';
-    taskRunner(plugin.config, status)
+    
+    let newConsole = {};
+    newConsole.log = function (){
+      
+      let content = Array.prototype.slice.call(arguments).join(' ');
+      console.log (content);
+      frame.document.body.innerHTML+='<span style="color:white">'+  content +'</span><br/>'
+      
+    };
+    
+    
+    taskRunner(plugin.config, status,newConsole)
       .then (function (value){
         runButton.disabled = false;
         frame.document.body.innerHTML += '<span style="color:white">Jobs Done</span><br/><br/>';
