@@ -24,7 +24,6 @@ function generateJobHTML(job) {
   container.className = "jobDisplay";
   let name = job.name.slice(0);
   for (let key in job) {
-    
     let rowDiv = document.createElement("div");
     rowDiv.className = `rowDiv`;
     let rowP = document.createElement('p');
@@ -35,15 +34,11 @@ function generateJobHTML(job) {
     input.className = `${key} jobInput`;
     input.value = job[key];
     input.name = key;
-    let inputHandler = function  (e) {
-  
-      console.log ('change',job[key],'to',input.value);
-  
+    let inputHandler = function (e) {
+      console.log('change', job[key], 'to', input.value);
       job[key] = input.value;
     };
-    input.addEventListener('input',inputHandler);
-    
-    
+    input.addEventListener('input', inputHandler);
     rowDiv.appendChild(input);
     container.appendChild(rowDiv)
   }
@@ -114,25 +109,21 @@ function pathHandlerSetup() {
 function setUpRunJobsButton() {
   let runButton = document.querySelector('#runJobs');
   let runButtonHandler = function (e) {
-  
-    let status=document.querySelector('#clobber').checked;
-    
-    console.log ('checked ',status);
-    
-    taskRunner(plugin.config,status)
-      .catch (function (value){
-  
-        let frame = plugin.createFrame('Plugin Template Frame', {
-          width: 300,
-          height: 250,
-          x: plugin.frame.width - 5,
-          y: plugin.frame.y
-        });
-  
-        frame.document.body.innerHTML = `<span style="color:white">Job Failed <br/><br/> ${value}</span> `;
+    let status = document.querySelector('#clobber').checked;
+    console.log('checked ', status);
+    let frame = plugin.createFrame('Plugin Template Frame', {
+      width: 300,
+      height: 250,
+      x: plugin.frame.width - 5,
+      y: plugin.frame.y
+    });
+    frame.document.body.innerHTML = '<span style="color:white">Jobs Running</span><br/><br/>';
+    taskRunner(plugin.config, status)
+      .catch(function (value) {
+        frame.document.body.innerHTML += `<span style="color:white">Job Failed <br/><br/> ${value}</span> `;
       })
   };
-  runButton.addEventListener('click',runButtonHandler);
+  runButton.addEventListener('click', runButtonHandler);
 }
 function setupCheckbox() {
   var settingsCheckbox = document.querySelector('#some-setting');
