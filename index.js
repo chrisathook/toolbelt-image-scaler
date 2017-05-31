@@ -111,6 +111,9 @@ function setUpRunJobsButton() {
   let runButtonHandler = function (e) {
     let status = document.querySelector('#clobber').checked;
     console.log('checked ', status);
+  
+    runButton.disabled = true;
+    
     let frame = plugin.createFrame('Plugin Template Frame', {
       width: 300,
       height: 250,
@@ -119,7 +122,13 @@ function setUpRunJobsButton() {
     });
     frame.document.body.innerHTML = '<span style="color:white">Jobs Running</span><br/><br/>';
     taskRunner(plugin.config, status)
+      .then (function (value){
+        runButton.disabled = false;
+        frame.document.body.innerHTML = '<span style="color:white">Jobs Done</span><br/><br/>';
+        
+      })
       .catch(function (value) {
+        runButton.disabled = false;
         frame.document.body.innerHTML += `<span style="color:white">Job Failed <br/><br/> ${value}</span> `;
       })
   };
