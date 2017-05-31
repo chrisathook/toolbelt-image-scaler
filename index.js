@@ -114,7 +114,12 @@ function pathHandlerSetup() {
 function setUpRunJobsButton() {
   let runButton = document.querySelector('#runJobs');
   let runButtonHandler = function (e) {
-    taskRunner(plugin.config)
+  
+    var status=document.querySelector('#clobber').checked;
+    
+    console.log ('checked ',status);
+    
+    taskRunner(plugin.config,status)
       .catch (function (value){
   
         let frame = plugin.createFrame('Plugin Template Frame', {

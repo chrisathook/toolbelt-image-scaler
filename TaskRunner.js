@@ -13,10 +13,10 @@ const JobLoader = require('./src/JobRunner').JobLoader;
 //
 //const source = path.resolve(process.cwd(), '_source');
 //const dist = path.resolve(process.cwd(), '_out');
-let run = function (jsonObj) {
+let run = function (jsonObj,clobber) {
   return new Promise(function (resolve, reject) {
     console.log('hello world');
-    JobLoader(jsonObj).then(function (jobs) {
+    JobLoader(jsonObj,clobber).then(function (jobs) {
       console.log('!!! Jobs Loaded');
       const queue = JobQueue();
       queue.runJobs(jobs).then(function () {

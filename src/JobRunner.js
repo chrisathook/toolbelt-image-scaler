@@ -13,7 +13,7 @@ let prompt = require('prompt');
 //
 const sizeAndScale = require('../src/ImageOperations').sizeAndScale;
 //
-let JobLoader = function (jsonObj) {
+let JobLoader = function (jsonObj,clobber) {
   return new Promise(function (resolve, reject) {
     let source = path.resolve(jsonObj.sourcePath);
     let dist = path.resolve(jsonObj.outputPath);
@@ -40,10 +40,19 @@ let JobLoader = function (jsonObj) {
       fs.mkdirSync(dist);
       processJobs();
     } else {
-      console.warn('Destination directory exists and will be cleaned of all files');
-      //del.sync(dist, {force: true});
+      
+      if (clobber===true){
+        del.sync(dist, {force: true});
+        
+      }else {
+        console.warn('Destination directory exists and will be cleaned of all files');
+        reject ('Output Directory Already Exists and Clobber Is Not Set');
+      }
+      
+      
+      //
   
-      reject ('Output Directory Already Exists and Clobber Is Not Set');
+      
       
       processJobs();
     }
