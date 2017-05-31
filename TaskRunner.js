@@ -28,7 +28,9 @@ let run = function (jsonObj) {
     })
       .catch (function (value){
         
-        console.log ('job loading failed',value)
+        console.log ('job loading failed',value);
+  
+        reject (value);
         
       });
   });

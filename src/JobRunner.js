@@ -43,7 +43,7 @@ let JobLoader = function (jsonObj) {
       console.warn('Destination directory exists and will be cleaned of all files');
       //del.sync(dist, {force: true});
   
-      reject ('dir exists');
+      reject ('Output Directory Already Exists and Clobber Is Not Set');
       
       processJobs();
     }
