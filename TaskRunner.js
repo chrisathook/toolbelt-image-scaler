@@ -25,6 +25,12 @@ let run = function (jsonObj,clobber) {
         .then(function () {
           resolve();
         })
+        .catch(function (value){
+  
+          console.warn ('There Was An Error With the Jobs',value);
+          reject (value);
+          
+        })
     })
       .catch (function (value){
         

@@ -115,7 +115,7 @@ function setUpRunJobsButton() {
   let runButton = document.querySelector('#runJobs');
   let runButtonHandler = function (e) {
   
-    var status=document.querySelector('#clobber').checked;
+    let status=document.querySelector('#clobber').checked;
     
     console.log ('checked ',status);
     
@@ -129,7 +129,7 @@ function setUpRunJobsButton() {
           y: plugin.frame.y
         });
   
-        frame.document.body.innerHTML = `<span style="color:white">Job Loading Failed <br/><br/> ${value}</span> `;
+        frame.document.body.innerHTML = `<span style="color:white">Job Failed <br/><br/> ${value}</span> `;
       })
   };
   runButton.addEventListener('click',runButtonHandler);
