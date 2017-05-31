@@ -24,7 +24,7 @@ function generateJobHTML(job) {
   container.className = "jobDisplay";
   let name = job.name.slice(0);
   for (let key in job) {
-    let value = job[key];
+    
     let rowDiv = document.createElement("div");
     rowDiv.className = `rowDiv`;
     let rowP = document.createElement('p');
@@ -33,8 +33,17 @@ function generateJobHTML(job) {
     let input = document.createElement("input");
     input.type = "text";
     input.className = `${key} jobInput`;
-    input.value = value;
+    input.value = job[key];
     input.name = key;
+    let inputHandler = function  (e) {
+  
+      console.log ('change',job[key],'to',input.value);
+  
+      job[key] = input.value;
+    };
+    input.addEventListener('input',inputHandler);
+    
+    
     rowDiv.appendChild(input);
     container.appendChild(rowDiv)
   }
@@ -67,7 +76,7 @@ function setUpAddJob() {
       "minQuality": 40,
       "suffix": "_WIDTHxHEIGHT"
     };
-    plugin.config.jobs.push(job)
+    plugin.config.jobs.push(job);
     let root = document.querySelector('#jobsRoot');
     root.appendChild(generateJobHTML(job));
   };
