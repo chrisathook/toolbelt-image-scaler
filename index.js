@@ -124,7 +124,7 @@ function setUpRunJobsButton() {
     taskRunner(plugin.config, status)
       .then (function (value){
         runButton.disabled = false;
-        frame.document.body.innerHTML = '<span style="color:white">Jobs Done</span><br/><br/>';
+        frame.document.body.innerHTML += '<span style="color:white">Jobs Done</span><br/><br/>';
         
       })
       .catch(function (value) {
