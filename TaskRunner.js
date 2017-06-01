@@ -6,8 +6,6 @@ const _ = require('lodash');
 const path = require('path');
 const fs = require('fs-plus');
 const rimraf = require('rimraf');
-//
-const JobConfig = require('./src/JobRunner').JobConfig;
 const JobQueue = require('./src/JobRunner').JobQueue;
 const JobLoader = require('./src/JobRunner').JobLoader;
 //
@@ -16,9 +14,9 @@ const JobLoader = require('./src/JobRunner').JobLoader;
 let run = function (jsonObj,clobber,console) {
   return new Promise(function (resolve, reject) {
     console.log('hello world');
-    JobLoader(jsonObj,clobber).then(function (jobs) {
+    JobLoader(jsonObj,clobber,console).then(function (jobs) {
       console.log('!!! Jobs Loaded');
-      const queue = JobQueue();
+      const queue = JobQueue(console);
       queue.runJobs(jobs).then(function () {
           console.log('All Jobs Done')
         })
