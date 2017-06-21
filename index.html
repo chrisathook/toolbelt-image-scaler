@@ -63,13 +63,15 @@
 <hr>
 <div>
   <p>sourcePath</p>
-  <input id="sourcePath" type="text"/>
+  <input id="sourcePath" readonly type="text"/>
   <input id="sourceOpen"  type="file" webkitdirectory style="display:none;" />
-  <label for="sourceOpen">Click To Set Source Directory</label>
+  <input id="sourceOpenDialog"  type="file" webkitdirectory  />
+
   <p>outputPath</p>
-  <input id="outputPath" type="text"/>
+  <input id="outputPath" readonly type="text"/>
   <input id="outputOpen" title=" " type="file" webkitdirectory style="display:none;" />
-  <label for="outputOpen">Click To Set Output Directory</label>
+  <input id="outputOpenDialog" title=" " type="file" webkitdirectory />
+  
   <h2>Jobs</h2>
   <button id="createJob">Add Job</button>
   <hr>
