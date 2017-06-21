@@ -19,7 +19,7 @@ function renderPathForm() {
   outputInput.value = plugin.config.outputPath;
   console.log(111, plugin.config.sourcePath);
   
-  let sourceOpenDialog = document.querySelector('#sourceOpenDialog');
+  
   
 }
 function generateJobHTML(job) {
@@ -94,32 +94,35 @@ function renderInterface() {
 function pathHandlerSetup() {
   let sourceInput = document.querySelector('#sourcePath');
   let outputInput = document.querySelector('#outputPath');
-  let sourceOpen = document.querySelector('#sourceOpen');
-  let outputOpen = document.querySelector('#outputOpen');
+  let sourceOpenDialog = document.querySelector('#sourceOpenDialog');
+  let outputOpenDialog = document.querySelector('#outputOpenDialog');
   
   
   let sourcePathChangeHandler = function (e){
   
-    console.log ("!!!!!! ",e.target.files)
+    console.log ("!!!!!! ",e.target.files,e.target.files[0].path);
+  
+    let path = e.target.files[0].path;
+    
+    sourceInput.value = path;
+    plugin.config.sourcePath = path;
   
   };
   
+  let ouputPathChangeHandler = function (e){
+    
+    console.log ("!!!!!! ",e.target.files,e.target.files[0].path);
+    
+    let path = e.target.files[0].path;
   
+    outputInput.value = path;
+    plugin.config.outputPath = path;
+    
+  };
   sourceOpenDialog.addEventListener('change',sourcePathChangeHandler);
+  outputOpenDialog.addEventListener('change',ouputPathChangeHandler);
   
-  
-  let sourceChangeHandler = function (e) {
-    console.log(e);
-    sourceInput.value = sourceOpen.files[0].path;
-    plugin.config.sourcePath = sourceInput.value;
-  };
-  let outChangeHandler = function (e) {
-    console.log(e);
-    outputInput.value = outputOpen.files[0].path;
-    plugin.config.outputPath = outputInput.value;
-  };
-  sourceOpen.addEventListener('change', sourceChangeHandler);
-  outputOpen.addEventListener('change', outChangeHandler);
+
 }
 function setUpRunJobsButton() {
   let runButton = document.querySelector('#runJobs');
