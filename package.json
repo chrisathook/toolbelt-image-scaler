@@ -1,8 +1,8 @@
 {
-  "name": "toolbelt-plugin-Image-scaler",
+  "name": "toolbelt-image-scaler",
   "title": "Static Image Scaler",
   "version": "0.0.5",
-  "description": "An example template for building Toolbelt plugins.",
+  "description": "Image Scaler for static images using Toolbelt",
   "main": "index.html",
   "config":{
     "width": 500,
